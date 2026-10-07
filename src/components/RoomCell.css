@@ -1,0 +1,78 @@
+.room {
+  display: grid;
+  place-items: center;
+  position: relative;
+  width: var(--room-size);
+  height: var(--room-size);
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.room--available {
+  background: var(--room-available-bg);
+  border: 1px solid var(--room-available-border);
+  color: var(--text-muted);
+}
+
+/* Occupied is shaded AND hatched AND struck through, never colour alone. */
+.room--occupied {
+  border: 1px solid transparent;
+  color: var(--room-occupied-text);
+  text-decoration: line-through;
+  background-color: var(--room-occupied-bg);
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.7) 0 2px,
+    transparent 2px 6px
+  );
+}
+
+/* Just booked is filled, ringed, bolder and tick-marked. */
+.room--booked {
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 0 0 3px var(--accent-ring);
+  transform: translateY(-1px);
+  animation: room-pop 260ms ease-out;
+}
+
+.room--booked::after {
+  content: "\2713";
+  position: absolute;
+  top: 1px;
+  right: 3px;
+  font-size: 0.5rem;
+  line-height: 1;
+  opacity: 0.85;
+}
+
+@keyframes room-pop {
+  0% {
+    transform: scale(0.86);
+  }
+  60% {
+    transform: scale(1.08) translateY(-1px);
+  }
+  100% {
+    transform: scale(1) translateY(-1px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .room {
+    transition: none;
+  }
+
+  .room--booked {
+    animation: none;
+  }
+}

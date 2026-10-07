@@ -1,0 +1,134 @@
+.controls {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 10px 20px;
+  padding: 16px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.controls__field {
+  display: grid;
+  gap: 4px;
+}
+
+.controls__label {
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.controls__input {
+  width: 230px;
+  padding: 9px 12px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  transition:
+    border-color 140ms ease,
+    box-shadow 140ms ease;
+}
+
+/* The prompt is longer than the value it replaces, so it is set smaller. */
+.controls__input::placeholder {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--text-faint);
+}
+
+.controls__input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-ring);
+}
+
+.controls__input[aria-invalid="true"] {
+  border-color: var(--danger);
+}
+
+.controls__hint {
+  font-size: 0.74rem;
+  color: var(--text-faint);
+}
+
+.controls__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-self: center;
+  padding-top: 18px;
+}
+
+.controls__error {
+  grid-column: 1 / -1;
+  padding: 8px 11px;
+  font-size: 0.82rem;
+  color: var(--danger);
+  background: var(--danger-soft);
+  border-radius: var(--radius-sm);
+}
+
+.btn {
+  padding: 9px 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition:
+    background-color 140ms ease,
+    border-color 140ms ease,
+    box-shadow 140ms ease,
+    opacity 140ms ease;
+}
+
+.btn:hover:not(:disabled) {
+  border-color: var(--text-faint);
+  background: var(--surface-sunken);
+}
+
+.btn--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+@media (max-width: 560px) {
+  .controls {
+    grid-template-columns: 1fr;
+  }
+
+  .controls__input {
+    width: 100%;
+  }
+
+  .controls__actions {
+    padding-top: 0;
+  }
+
+  .controls__actions .btn {
+    flex: 1 1 auto;
+  }
+}
