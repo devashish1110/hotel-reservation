@@ -2,7 +2,7 @@
 
 A single-page app that books 1–5 rooms in a 97-room hotel and picks the group with the shortest walk between them. The booking rules live in a dependency-free domain layer; the UI is a cinema-seat-map style plan of the building.
 
-Live: LIVE_URL_HERE
+Live: https://devashish1110.github.io/hotel-reservation/
 
 ## Running it
 
